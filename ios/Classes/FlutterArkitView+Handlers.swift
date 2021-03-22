@@ -215,4 +215,14 @@ extension FlutterArkitView {
         }
         sceneView.scene.rootNode.removeAnimation(forKey: key)
     }
+
+    func onCameraEulerAngles(_ result:FlutterResult){
+        if let frame = sceneView.session.currentFrame {
+            let res = serializeArray(frame.camera.eulerAngles)
+            result(res)
+        } else {
+            result(nil)
+        }
+   }
+
 }
